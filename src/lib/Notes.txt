@@ -1,0 +1,24 @@
+<style>
+  :root {
+    --neon-pink: #ff6ec7;
+    --neon-blue: #00eaff;
+    --neon-green: #00ff6e;
+    --neon-purple: #d600ff;
+    --neon-yellow: #ffff00;
+  }
+
+  /* Use the neon colors in your styles */
+  h1 {
+    color: var(--neon-pink);
+    text-shadow: 0 0 10px var(--neon-pink);
+  }
+
+  p {
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
+  }
+
+  button {
+    background-color: var(--neon-green);
+    box-shadow: 0 0 10px var(--neon-green);
+  }
