@@ -26,11 +26,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
       - name: Install and Build
         run: |
           npm install
           npm run build
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: website
+          path: |
+            dist
+            !dist/**/*.md
         
   # Single deploy job since we're just deploying
   deploy:
@@ -47,7 +53,8 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: './dist/.'
+          name: website
+          path: output/dist/.
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
