@@ -1,9 +1,9 @@
 {
   "name": "learning_svelet",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
-  "homepage": "https://codepalofficial.github.io/PodPal/",
+  "homepage": "https://codepalofficial.github.io/PodPal",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
