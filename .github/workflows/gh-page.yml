@@ -34,8 +34,7 @@ jobs:
         with:
           name: github-pages
           path: |
-            dist
-            !dist/**/*.md
+            ./dist/.
           retention-days: 5
 
   deploy:
