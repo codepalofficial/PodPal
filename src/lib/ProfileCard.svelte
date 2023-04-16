@@ -7,7 +7,7 @@
 
   
 
-	let podcastHashtagsString = podcastHashtags.join(" * ");
+	let podcastHashtagsString: string = podcastHashtags.join(" * ");
 	console.log(podcastName);
 	console.log(podcastHashtags)
 

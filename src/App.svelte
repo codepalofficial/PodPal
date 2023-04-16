@@ -1,15 +1,14 @@
 <script lang="ts">
-  import type podcastCardData from './lib/types/PodCastCardData';
+  import type podcastCardData from './lib/types/PodcastCardData';
   // import svelteLogo from './assets/svelte.svg'
   // import viteLogo from '/vite.svg'
   // import Counter from './lib/Counter.svelte'
   // import Hoverable from './lib/Hoverable.svelte';
 
-  import ProfileCard from './lib/ProfileCard.svelte'
-  import InputField from './lib/InputField.svelte';
   import PodcastArchive from './lib/PodcastArchive.svelte';
+    import ProfileCardGrid from './lib/ProfileCardGrid.svelte';
+    import Navbar from './lib/Navbar.svelte';
 
-  var field: InputField;
   var selectedPodcast: undefined | podcastCardData = undefined;
  
   const podcastSelectedEventHandler = (data: podcastCardData) => {
@@ -83,28 +82,15 @@
 
 
 <main>
-
-  <div>
-      <span class="websiteLogo"><img src="images/podcastsummarylogo.png" alt="background" height="300px" width="300px "  /></span>
-  </div>
-  <h1>PodPal: Podcast Summary Platform: Powered by ChatGPT</h1>
-  <h2> Welcome to the PodPal community! Subscribe below and find yourself with a curated summary of your favorite Podcast in your inbox daily.</h2>
-
-  <InputField bind:this={field}/>
-
-  <button on:click={() => field.focus()}>Subscribe</button>
+  <Navbar resetPage={resetSelectedPodcast} ></Navbar>
+  <h2> Welcome to the PodPal community! Subscribe and find yourself with a curated summary of your favorite Podcast in your inbox daily.</h2>
+ 
 
   <div class="content">
     {#if selectedPodcast === undefined}
-      <div class="podcast-card-list">
-        {#each podcasts as podcast}
-        <button on:click={() => podcastSelectedEventHandler(podcast)}>
-          <ProfileCard {...podcast}></ProfileCard>
-        </button>
-        {/each}
-      </div>
+      <ProfileCardGrid podcasts={podcasts} podcastSelectedEventHandler={podcastSelectedEventHandler}></ProfileCardGrid>
     {:else}
-      <PodcastArchive data={selectedPodcast} resetPage={resetSelectedPodcast}></PodcastArchive>
+      <PodcastArchive data={selectedPodcast}></PodcastArchive>
     {/if}
   </div>
   
@@ -113,20 +99,13 @@
 
 <style>
 :global(body) {
-      margin: 0%;
-      padding:0% ;
       background: rgb(25, 25, 25)}
+
 
   .podcast-card-list {
     display: flex;
 	  justify-content: space-between;
   }
-h1 {color:#00ff6e} 
 H2{color:#d600ff}
-
-
-
-
-
 </style>
 

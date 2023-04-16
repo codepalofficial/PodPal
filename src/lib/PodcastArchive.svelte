@@ -1,13 +1,10 @@
 
 
-<script lang="ts">
-    import type podcastCardData from './types/PodCastCardData';
+<script lang="ts"> 
+    import type podcastCardData from './types/PodcastCardData';
     export let data: podcastCardData;
-    export let resetPage: () => void;
 </script>
 
-
-<button on:click={resetPage}>Back</button>
 <h1>{data.podcastName}</h1>
 <h2>{data.podcastSummary}</h2>
 
