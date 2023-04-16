@@ -33,8 +33,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1.0.8
         with:
           name: github-pages
-          path: |
-            ./dist/.
+          path: ./dist/.
           retention-days: 5
 
   deploy:
