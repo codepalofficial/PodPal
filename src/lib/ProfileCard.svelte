@@ -1,15 +1,12 @@
 
 <script lang="ts">
-	export let podcastName: string;
-	export let podcastSummary: string;
-	export let podcastHashtags: string[];
-	export let podcastThumbnailUrl: string;
+    import type PodcastCardData from "./types/PodcastCardData";
 
-  
+	export let podcastCardData: PodcastCardData;
 
-	let podcastHashtagsString: string = podcastHashtags.join(" * ");
-	console.log(podcastName);
-	console.log(podcastHashtags)
+	let podcastHashtagsString: string = podcastCardData.podcastHashtags.join(" * ");
+	console.log(podcastCardData.podcastName);
+	console.log(podcastCardData.podcastHashtags)
 
 	let maxLength = 95;
 	let showFullText = false;
@@ -31,20 +28,20 @@
 	<card >
 		<!-- <button class = "primary"> -->
 		<div class="podcast-thumbnail-img">
-			<img src={podcastThumbnailUrl} alt="thumbnail">
+			<img src={podcastCardData.podcastThumbnailUrl} alt="thumbnail">
 		</div>
 		<!-- </button> -->
 		<div class="podcast-card-info">
-			<h2><span class="podCast-name">{podcastName}</span></h2>
+			<h2><span class="podCast-name">{podcastCardData.podcastName}</span></h2>
 			<div class="Podcast-hashtags">
 				<p>{podcastHashtagsString}</p>
 			</div>
 			<div class="Podcast-content">
 				<div class="Podcast-summary">
 					{#if showFullText}
-  						<p1 on:mouseleave={toggleFullText}>{podcastSummary}</p1>
+  						<p1 on:mouseleave={toggleFullText}>{podcastCardData.podcastSummary}</p1>
 					{:else}
- 						<p1 on:mouseenter={toggleFullText}>{shortenText(podcastSummary, maxLength)}</p1>
+ 						<p1 on:mouseenter={toggleFullText}>{shortenText(podcastCardData.podcastSummary, maxLength)}</p1>
 					{/if}
 				</div>
 			</div>
@@ -89,7 +86,4 @@
 	height: 300px;
 	margin: 5px;
 }
-
-
 </style>
-
