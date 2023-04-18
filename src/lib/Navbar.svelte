@@ -12,7 +12,7 @@
             <button class="navLogoBtn"  on:click={resetPage}>
                 <img
                     class="navLogoImg"
-                    src="/images/podcastsummarylogo.png"
+                    src="./images/podcastsummarylogo.png"
                     alt="logo"
                 />
             </button>
