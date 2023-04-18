@@ -1,34 +1,47 @@
 <script lang="ts">
-    import InputField from "./InputField.svelte";
     export let resetPage: () => void;
-    var field: InputField;
+    var subscriber: string = "";
+    const subscribeHandler = () => {
+        console.log(subscriber);
+    }
 </script>
 
-<div class="navbar">
-    <img
-        class="navLogo"
-        src="public/images/podcastsummarylogo.png"
-        alt="logo"
-        on:click={resetPage}
-    />
-    <div class="title">
-        PodPal: Podcast Platform: Powered by ChatGPT
+<nav class="navbar">
+    <div class="content">
+        <div class="navLogo">
+            <button class="navLogoBtn"  on:click={resetPage}>
+                <img
+                    class="navLogoImg"
+                    src="/images/podcastsummarylogo.png"
+                    alt="logo"
+                />
+            </button>
+        </div>
+        <div class="title">
+            <h2>PodPal: Podcast Platform: Powered by ChatGPT</h2>
+        </div>
+        <div class="subscribe">
+            <input type=string bind:value={subscriber}/>
+            <button on:click={subscribeHandler}>Subscribe</button>
+        </div>
     </div>
-    <div class="subscribe">
-        <InputField bind:this={field} />
-        <button on:click={() => field.focus()}>Subscribe</button>
-    </div>
-</div>
+</nav>
 
 <style>
-    .navLogo {
+    .navLogoBtn {
+        border: none;
+        background: none;
+        outline: none;
+        cursor: pointer;
+        float: left;
+    }
+    .navLogoImg {
         border: 3px solid yellow;
         border-radius: 2rem;
         width: 100px;
         height: 100px;
-        float: left;
     }
-    .navLogo:hover {
+    .navLogoImg:hover {
         border: 3px solid pink;
     }
     .title {
@@ -39,13 +52,23 @@
         
     }
     .subscribe{
-        /* float: right; */
-        text-align: right;
+        float: right;
+        /* text-align: right; */
     }
-    .navbar {
+    .content {
+        width: 100%;
         height: 150px;
+        display: flex;
+        position :relative;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar {
+        top: 0;
+        position: fixed;
     }
 </style>
-
 
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type podcastCardData from './lib/types/PodcastCardData';
+  import type PodcastCardData from './lib/types/PodcastCardData';
   // import svelteLogo from './assets/svelte.svg'
   // import viteLogo from '/vite.svg'
   // import Counter from './lib/Counter.svelte'
@@ -9,9 +9,9 @@
     import ProfileCardGrid from './lib/ProfileCardGrid.svelte';
     import Navbar from './lib/Navbar.svelte';
 
-  var selectedPodcast: undefined | podcastCardData = undefined;
+  var selectedPodcast: undefined | PodcastCardData = undefined;
  
-  const podcastSelectedEventHandler = (data: podcastCardData) => {
+  const podcastSelectedEventHandler = (data: PodcastCardData) => {
     console.log(data);
     selectedPodcast = data;
   }
@@ -20,61 +20,61 @@
     selectedPodcast = undefined;
   }
 
-  let podcasts: podcastCardData[] = [
+  let podcasts: PodcastCardData[] = [
   {
     podcastName: "Bloomberg Technology",
 	  podcastSummary: "Bloomberg Technology is the only daily news program focused exclusively on technology, innovation and hte future of business",
 	  podcastHashtags: ["Finance", "Business" , "Technology"],
 	  podcastThumbnailUrl: "images/bloombergTechnology.png"
-  } as podcastCardData,
+  } as PodcastCardData,
   {
     podcastName: "Joe Rogan Experience",
 	  podcastSummary: "The official podcast of comedian Joe Rogan. Follow The Joe Rogan Clips show page for some fo the best moments from the episodes. ",
 	  podcastHashtags: ["Society", "Culture"],
 	  podcastThumbnailUrl: "images/joeroganExperience.jpg"
-  } as podcastCardData,
+  } as PodcastCardData,
   {
     podcastName: "Breaking Bread",
 	  podcastSummary: "Girls with No Job and Jacke O. are here to highlight their favorite moments of the week and discuss the stories they missed - Listeners and fellow Toasters will also have the opportunity to ask them anything and even give their own hot takes on the latest topics.",
 	  podcastHashtags: ["Finance", "Business" , "Technology"],
 	  podcastThumbnailUrl: "images/breakingBread.webp"
-  } as podcastCardData,
+  } as PodcastCardData,
   {
     podcastName: "Conspiracy Theories",
 	  podcastSummary: "Bloomberg Technology is the only daily news program focused exclusively on technology, innovation and hte future of business",
 	  podcastHashtags: ["Finance", "Business" , "Technology"],
 	  podcastThumbnailUrl: "images/conspiracyTheories.webp"
-  } as podcastCardData,
+  } as PodcastCardData,
   {
     podcastName: "Are You Garbage",
 	  podcastSummary: "Bloomberg Technology is the only daily news program focused exclusively on technology, innovation and hte future of business",
 	  podcastHashtags: ["Finance", "Business" , "Technology"],
 	  podcastThumbnailUrl: "images/areyouGarbage.webp"
-  } as podcastCardData,  {
+  } as PodcastCardData,  {
     podcastName: "Ologies",
 	  podcastSummary: "Bloomberg Technology is the only daily news program focused exclusively on technology, innovation and hte future of business",
 	  podcastHashtags: ["Finance", "Business" , "Technology"],
 	  podcastThumbnailUrl: "images/ologies.webp"
-  } as podcastCardData,
+  } as PodcastCardData,
   {
     podcastName: "Stuff You Should Know",
 	  podcastSummary: "Bloomberg Technology is the only daily news program focused exclusively on technology, innovation and hte future of business",
 	  podcastHashtags: ["Finance", "Business" , "Technology"],
 	  podcastThumbnailUrl: "images/stuffyoushouldKnow.jpeg"
-  } as podcastCardData,
+  } as PodcastCardData,
   {
     podcastName: "Planet Money",
 	  podcastSummary: "Bloomberg Technology is the only daily news program focused exclusively on technology, innovation and hte future of business",
 	  podcastHashtags: ["Finance", "Business" , "Technology"],
 	  podcastThumbnailUrl: "images/planetMoney.png"
-  } as podcastCardData,
+  } as PodcastCardData,
 
   {
     podcastName: "How to Save Planet",
 	  podcastSummary: "Bloomberg Technology is the only daily news program focused exclusively on technology, innovation and hte future of business",
 	  podcastHashtags: ["Finance", "Business" , "Technology"],
 	  podcastThumbnailUrl: "images/howtosaveaPlanet.webp"
-  } as podcastCardData,
+  } as PodcastCardData,
 ]
 
 
