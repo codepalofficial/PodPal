@@ -1,17 +1,23 @@
 <script lang="ts">
+  import "./app.css"
   import type PodcastCardData from "./lib/types/PodcastCardData";
-  // import svelteLogo from './assets/svelte.svg'
-  // import viteLogo from '/vite.svg'
-  // import Counter from './lib/Counter.svelte'
-  // import Hoverable from './lib/Hoverable.svelte';
-
   import PodcastArchive from "./lib/PodcastArchive.svelte";
   import ProfileCardGrid from "./lib/ProfileCardGrid.svelte";
   import Navbar from "./lib/Navbar.svelte";
-  import getPodcasts from "./data/TestData";
+  import Footer from "./lib/Footer.svelte";
+  import { getPodcasts } from "./server/FireStoreCalls";
 
   var selectedPodcast: undefined | PodcastCardData = undefined;
-  const podcasts = getPodcasts();
+  let podcasts = []
+  let isLoading = true;
+
+  function setPodcasts(input: PodcastCardData[]) {
+    podcasts = input;
+    isLoading = false;
+  }
+
+  getPodcasts().then((values) => setPodcasts(values))
+
   const podcastSelectedEventHandler = (data: PodcastCardData) => {
     console.log(data);
     selectedPodcast = data;
@@ -22,29 +28,22 @@
   };
 </script>
 
-<main>
-  <Navbar resetPage={resetSelectedPodcast} />
-  <div class="content">
+<main class="bg-slate-600">
+  <Navbar/>
+  <div class="pt-150">
     {#if selectedPodcast === undefined}
       <h2>
         Welcome to the PodPal community! Subscribe and find yourself with a
         curated summary of your favorite Podcast in your inbox daily.
       </h2>
-      <ProfileCardGrid {podcasts} {podcastSelectedEventHandler} />
+      <ProfileCardGrid podcasts={podcasts} podcastSelectedEventHandler={podcastSelectedEventHandler} />
     {:else}
       <PodcastArchive data={selectedPodcast} />
     {/if}
   </div>
+  <Footer/> 
 </main>
 
-<style>
-  :global(body) {
-    background: rgb(25, 25, 25);
-  }
-  .content {
-    padding-top: 100px;
-  }
-  H2 {
-    color: #d600ff;
-  }
+<style lang="postcss">
+
 </style>

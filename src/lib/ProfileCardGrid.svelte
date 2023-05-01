@@ -9,9 +9,13 @@
 
 <div class="podcast-card-list">
     {#each podcasts as podcast}
-    <button on:click={() => podcastSelectedEventHandler(podcast)}>
+    <!-- <button class="p-20" on:click={() => podcastSelectedEventHandler(podcast)}> -->
       <ProfileCard podcastCardData={podcast}></ProfileCard>
-    </button>
+    <!-- </button> -->
     {/each}
 </div>
 
+
+<style lang="postcss">
+
+</style>
