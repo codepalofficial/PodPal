@@ -1,21 +1,26 @@
 <script lang="ts">
     import type PodcastCardData from "./types/PodcastCardData";
     import ProfileCard from "./ProfileCard.svelte";
+    import { podcastStore, selectedPodcastStore } from "../stores/podcastStore";
 
-    export let podcasts: PodcastCardData[]; 
-    export let podcastSelectedEventHandler: (data: PodcastCardData) => void
-    
+    let podcasts: PodcastCardData[] = [];
+    podcastStore.subscribe(data => {
+        podcasts = data;
+    }); 
 </script>
 
+
+
 <div class="podcast-card-list">
-    {#each podcasts as podcast}
-    <!-- <button class="p-20" on:click={() => podcastSelectedEventHandler(podcast)}> -->
-      <ProfileCard podcastCardData={podcast}></ProfileCard>
-    <!-- </button> -->
-    {/each}
+  {#each podcasts as podcast}
+    <button class="p-20" on:click={ () => {selectedPodcastStore.set(podcast)}}>
+      <ProfileCard {podcast} />
+    </button>
+  {/each}
 </div>
 
-
 <style lang="postcss">
-
+  .podcast-card-list {
+    padding-top: 100px;
+  }
 </style>
