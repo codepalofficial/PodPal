@@ -6,44 +6,48 @@
   import Navbar from "./lib/Navbar.svelte";
   import Footer from "./lib/Footer.svelte";
   import { getPodcasts } from "./server/FireStoreCalls";
+  import { onMount } from "svelte";
+  import { podcastStore, selectedPodcastStore } from "./stores/podcastStore";
 
-  var selectedPodcast: undefined | PodcastCardData = undefined;
-  let podcasts = []
-  let isLoading = true;
 
-  function setPodcasts(input: PodcastCardData[]) {
-    podcasts = input;
-    isLoading = false;
-  }
 
-  getPodcasts().then((values) => setPodcasts(values))
-
-  const podcastSelectedEventHandler = (data: PodcastCardData) => {
-    console.log(data);
+  let selectedPodcast: PodcastCardData | undefined;
+  
+  selectedPodcastStore.subscribe(data => {
     selectedPodcast = data;
-  };
+  })
 
-  const resetSelectedPodcast = () => {
-    selectedPodcast = undefined;
-  };
+  onMount(() => {
+    let isLoading = true;
+    getPodcasts().then(values =>  {
+      podcastStore.set(values)
+      isLoading = false;
+      selectedPodcastStore.set(undefined);
+    })
+  })
+
 </script>
 
-<main class="bg-slate-600">
+
+<div class="">
   <Navbar/>
-  <div class="pt-150">
+</div>
+<main class="bg-slate-600">
+  <div class="content">
     {#if selectedPodcast === undefined}
-      <h2>
-        Welcome to the PodPal community! Subscribe and find yourself with a
-        curated summary of your favorite Podcast in your inbox daily.
-      </h2>
-      <ProfileCardGrid podcasts={podcasts} podcastSelectedEventHandler={podcastSelectedEventHandler} />
+      <h1 class="text-center text-5xl font-bold text-white">
+        Welcome to the PodPal. <br>
+        Find your next favorite podcast.</h1>
+      <ProfileCardGrid/>
     {:else}
-      <PodcastArchive data={selectedPodcast} />
+      <PodcastArchive/>
     {/if}
   </div>
   <Footer/> 
 </main>
 
 <style lang="postcss">
-
+  .content{
+    padding-top: 150px;
+  }
 </style>

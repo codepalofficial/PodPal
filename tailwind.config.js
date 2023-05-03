@@ -2,10 +2,14 @@
 export default {
   content: [
     "./index.html",
-    './src/**/*.{html,js,svelte,ts}'
+    "./src/**/*.{html,js,svelte,ts}",
+    "./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}",
   ],
   theme: {
     extend: {}
   },
-  plugins: []
+  plugins: [
+    require('flowbite/plugin')
+  ],
+  darkMode: "class",
 };

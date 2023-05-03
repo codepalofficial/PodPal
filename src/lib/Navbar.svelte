@@ -15,6 +15,7 @@
   navClass="px-2 sm:px-4 py-2.5 absolute w-full z-20 top-0 left-0 border-b"
   let:hidden
   let:toggle
+  fluid={false}
 >
   <NavBrand href="/">
     <img src={logo} class="mr-3 h-6 sm:h-9" alt="PodPal Logo" />
@@ -74,4 +75,3 @@
     <NavLi href="/contact">Contact</NavLi>
   </NavUl>
 </Navbar>
-
