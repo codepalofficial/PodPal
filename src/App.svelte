@@ -8,6 +8,7 @@
   import { getPodcasts } from "./server/FireStoreCalls";
   import { onMount } from "svelte";
   import { podcastStore, selectedPodcastStore } from "./stores/podcastStore";
+  import EpisodeCardGrid from "./lib/EpisodeCardGrid.svelte";
 
 
 
@@ -19,13 +20,13 @@
 
   onMount(() => {
     let isLoading = true;
+    console.log("This is my first message", import.meta.env.VITE_GEET_MESSAGING)
     getPodcasts().then(values =>  {
       podcastStore.set(values)
       isLoading = false;
       selectedPodcastStore.set(undefined);
     })
   })
-
 </script>
 
 
@@ -36,8 +37,8 @@
   <div class="content">
     {#if selectedPodcast === undefined}
       <h1 class="text-center text-5xl font-bold text-white">
-        Welcome to the PodPal. <br>
-        Find your next favorite podcast.</h1>
+        Welcome to the Podpal.AI. <br>
+        Find your next favorite podcast!</h1>
       <ProfileCardGrid/>
     {:else}
       <PodcastArchive/>
