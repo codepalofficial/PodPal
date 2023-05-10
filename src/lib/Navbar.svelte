@@ -17,7 +17,7 @@
   let:toggle
   fluid={false}
 >
-  <NavBrand href="/">
+  <NavBrand href="./">
     <img src={logo} class="mr-3 h-6 sm:h-9" alt="PodPal Logo" />
     <span
       class="self-center whitespace-nowrap text-xl font-semibold dark:text-white"
@@ -70,8 +70,8 @@
     <NavHamburger on:click={toggle} />
   </div>
   <NavUl {hidden}>
-    <NavLi href="/" active={true}>Home</NavLi>
-    <NavLi href="/about">About</NavLi>
-    <NavLi href="/contact">Contact</NavLi>
+    <NavLi href="./" active={true}>Home</NavLi>
+    <NavLi href="./about">About</NavLi>
+    <NavLi href="./contact">Contact</NavLi>
   </NavUl>
 </Navbar>
