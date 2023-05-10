@@ -46,7 +46,6 @@ jobs:
           path: ./dist/.
           retention-days: 5
 
-
   deploy:
     environment:
       name: github-pages

@@ -1,6 +1,7 @@
 
 <script lang="ts">
 	import { Card } from "flowbite-svelte";
+	// import { AccordionItem, Accordion } from 'flowbite-svelte'
     import type PodcastCardData from "./types/PodcastCardData";
 	export let podcast: PodcastCardData;
 

@@ -22,7 +22,7 @@
     <span
       class="self-center whitespace-nowrap text-xl font-semibold dark:text-white"
     >
-      PodPal
+      PodPal.AI
     </span>
   </NavBrand>
   <div class="flex md:order-2">
@@ -65,7 +65,7 @@
           /></svg
         >
       </div>
-      <Input id="search-navbar" class="pl-10" placeholder="Search..." />
+      <Input id="search-navbar" class="pl-10" placeholder="Search your Podcast..." />
     </div>
     <NavHamburger on:click={toggle} />
   </div>
